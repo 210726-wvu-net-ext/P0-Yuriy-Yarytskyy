@@ -1,0 +1,16 @@
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.exe
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.deps.json
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.runtimeconfig.json
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.runtimeconfig.dev.json
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.dll
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\ref\DotNetDebugging.dll
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\bin\Debug\net5.0\DotNetDebugging.pdb
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.csproj.AssemblyReference.cache
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.AssemblyInfoInputs.cache
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.AssemblyInfo.cs
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.csproj.CoreCompileInputs.cache
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.dll
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\ref\DotNetDebugging.dll
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.pdb
+C:\Revature_10\P0-Yuriy-Yarytskyy\DotNetDebugging\obj\Debug\net5.0\DotNetDebugging.genruntimeconfig.cache
