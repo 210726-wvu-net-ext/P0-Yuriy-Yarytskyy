@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Revature_10\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\DotNetDebugging.csproj",
+      "projectUniqueName": "C:\\Revature_12_Week_Training\\p0\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\DotNetDebugging.csproj",
       "projectName": "DotNetDebugging",
-      "projectPath": "C:\\Revature_10\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\DotNetDebugging.csproj",
+      "projectPath": "C:\\Revature_12_Week_Training\\p0\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\DotNetDebugging.csproj",
       "packagesPath": "C:\\Users\\yyary\\.nuget\\packages\\",
-      "outputPath": "C:\\Revature_10\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\obj\\",
+      "outputPath": "C:\\Revature_12_Week_Training\\p0\\P0-Yuriy-Yarytskyy\\DotNetDebugging\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
