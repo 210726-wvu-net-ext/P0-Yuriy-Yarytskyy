@@ -4,6 +4,7 @@ using BL;
 using System.Collections.Generic;
 using Serilog;
 
+
 namespace UI
 {
     /// <summary>
@@ -57,6 +58,12 @@ namespace UI
                 Console.WriteLine("---------------------------------------");
                 Console.WriteLine("[6] VIEW ALL RESTAURANTS");
                 Console.WriteLine("---------------------------------------");
+                Console.WriteLine("------------**************-------------");
+                Console.WriteLine("-------ARE YOU AN ADMIN USERS----------");
+                Console.WriteLine("------------****[YES]*****-------------");
+                Console.WriteLine("------------******OR******-------------");
+                Console.WriteLine("------------*****[NO]*****-------------");
+               
 
                 switch(Console.ReadLine())
                 {
@@ -87,6 +94,12 @@ namespace UI
                     break;
 
                     case "6":
+                        ViewAllRestaurants();
+                    break;
+                    case "YES":
+                        LogIn();
+                    break;
+                    case "NO":
                         ViewAllRestaurants();
                     break;
 
@@ -230,10 +243,7 @@ namespace UI
                 Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
             }
         }
-        private void SearchForUser()
-        {
-            Console.WriteLine("Searching for a user");
-        }
+       
 
         /// <summary>
         /// A function to to search for a restaurant by using different methods
@@ -536,11 +546,11 @@ namespace UI
          private void ViewAllUsers()
         {
             Log.Debug("ViewAllUsers was used!!!");
-            List<Restaurant> restaurants = _userbl.ViewAllRestaurants();
-            foreach(Restaurant restaurant in restaurants)
+            List<User> users = _userbl.ViewAllUsers();
+            foreach(User user in users)
             {
                 Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
-                Console.WriteLine($"    Restaurant ID: {restaurant.Id}      Food-Type: {restaurant.Type}      Name: {restaurant.Name}      Address: {restaurant.Address}, {restaurant.City}, {restaurant.State}, {restaurant.ZipCode}");
+                Console.WriteLine($"    Restaurant ID: {user.Id}      User's name: {user.Name}      User's Email: {user.Email}");
                 Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
             }
         }
@@ -611,6 +621,61 @@ namespace UI
             Console.WriteLine("The average of " + operandx.Name + " is: " + average);
 
         }
+         public void LogIn()
+        {
+            string userName;
+            string password;
+            string p, n;
+            Console.WriteLine("*********LOGIN*********");
+            Console.WriteLine("PLEASE ENTER USER_NAME:");
+            userName=Console.ReadLine();
+            Console.WriteLine("PLEASE ENTER YOUR PASSWORD:");
+            password = Console.ReadLine();
 
+            List<User> users = _userbl.ViewAllUsers();
+            
+            foreach(User user in users)
+            {       
+                n = user.Name;
+                p = user.Password;
+
+                if(n == userName && p == password)
+                {
+                    Console.WriteLine("WELCOM TO ADMIN MENU");
+                }
+              
+            }
+        }
+
+        public void SearchForUser()
+        {
+            Log.Debug("SearchForUser was used!!!");
+            string input;
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("SEARCHING FOR A USER");
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("PLEASE ENTER A NAME FOR YOUR SEARCH:");
+            input = Console.ReadLine();
+
+            List<User> foundUsers = _userbl.ViewAllUsers();
+            foreach(User foundUser in foundUsers)
+            {
+                if(foundUser.Name == input)
+                {
+                    if(foundUser.Name == null)
+                    {
+                        Console.WriteLine($"{input} no such user exists, please try a different entry");
+                    }
+                    else
+                    {
+                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine($"    Found user: {foundUser.Id}  {foundUser.Name}");
+                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
+                    }
+                }
+            }   
+         }
     }
+
+    
 }

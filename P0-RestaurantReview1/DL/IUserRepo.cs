@@ -14,11 +14,13 @@ namespace DL
 
          Review AddReview(Review review);
          User AddUser(User user);
+         
 
          Restaurant SearchRestaurantName(string name);
          Restaurant SearchRestaurantType(string type);
          Review SearchRestaurantRating(decimal rating);
          Restaurant SearchRestaurantCity(string city);
          Restaurant SearchRestaurantZipCode(int zipCode);
+        User SearchForUser(string name);
     }
 }

@@ -61,5 +61,11 @@ namespace BL
         {
             return _repo.SearchRestaurantZipCode(zipCode);
         }
+
+        public User SearchForUser(string name)
+        {
+            return _repo.SearchForUser(name);
+        }
+
     }
 }

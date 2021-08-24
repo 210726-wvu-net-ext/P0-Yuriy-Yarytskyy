@@ -154,5 +154,17 @@ namespace DL
             return new Models.Restaurant();
         }
 
+        public Models.User SearchForUser(string name)
+        {
+            Entities.User foundUser = _context.Users
+                .FirstOrDefault(user => user.Name == name);
+         
+            if(foundUser != null)
+            {
+                return new Models.User(foundUser.Id, foundUser.Name, foundUser.Password, foundUser.Email);
+            }
+            return new Models.User();
+        }
+
     }
 }
