@@ -2,6 +2,7 @@ using Models;
 using System;
 using BL;
 using System.Collections.Generic;
+using Serilog;
 
 namespace UI
 {
@@ -10,10 +11,18 @@ namespace UI
     /// </summary>
     public class MainMenu : IMenu
     {
+        
         private IUserBL _userbl;
         public MainMenu(IUserBL bl)
         {
             _userbl = bl;
+            Log.Logger=new LoggerConfiguration()
+                            .MinimumLevel.Debug()
+                            .WriteTo.Console()
+                            .WriteTo.File("../logs/restrevlogs.txt", rollingInterval:RollingInterval.Day)
+                            .CreateLogger();
+            Log.Information("UI begining");
+
         }
 
         /// <summary>
@@ -52,6 +61,7 @@ namespace UI
                 switch(Console.ReadLine())
                 {
                     case "0":
+                        Log.Debug("Program was manually exited!!!");
                         Console.WriteLine("You have chosen to exit!");
                         repeat = false;
                     break;
@@ -82,6 +92,7 @@ namespace UI
 
                     default:
                         Console.WriteLine("WRONG SELECTION!!!");
+                        Log.Debug("Invalid selection in main menu!!!");
                     break;
                 }
             }while(repeat);
@@ -96,6 +107,7 @@ namespace UI
         /// <returns></returns>
         private void AddUser()
         {
+            Log.Debug("AddUser was used!!!");
             string inputName;
             string inputPassword;
             string inputEmail;
@@ -116,10 +128,24 @@ namespace UI
             }while(String.IsNullOrWhiteSpace(inputName) && String.IsNullOrWhiteSpace(inputPassword) && String.IsNullOrWhiteSpace(inputEmail));
 
             userToAdd = new User(inputName, inputPassword, inputEmail);
-            userToAdd = _userbl.AddUser(userToAdd);
-            Console.WriteLine("_____________________________________________________");
-            Console.WriteLine($"{userToAdd.Name} was successfully added as a user.");
-            Console.WriteLine("_____________________________________________________");
+            try
+            {
+                userToAdd = _userbl.AddUser(userToAdd);
+                Console.WriteLine("_____________________________________________________");
+                Console.WriteLine($"{userToAdd.Name} was successfully added as a user.");
+                Console.WriteLine("_____________________________________________________");
+                Log.Debug("User was successfully added." + userToAdd.Name);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User was not added" + userToAdd.Name);
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+            
         }
 
         /// <summary>
@@ -127,6 +153,7 @@ namespace UI
         /// </summary>
         private void AddReview()
         {
+            Log.Debug("AddReview was used!!!");
             decimal rating = 0;
             string comment;
             int userId;
@@ -172,11 +199,16 @@ namespace UI
                             reviewToAdd = _userbl.AddReview(reviewToAdd);
                             Console.WriteLine("------------------------------------------------------------------------------------------------------");
                             Console.WriteLine(selectedUser.Name + " has added new review to " + selectedRestaurant.Name + " restaurant successfully.");
+                            Log.Debug("Review has been added!" + reviewToAdd.Id);
                         }
                         catch (Exception ex)
                         {
-                            
-                            Console.WriteLine(ex);//add loger in parantesis
+                            Log.Error(ex, "Review was not added");
+                            Console.WriteLine(ex);
+                        }
+                        finally
+                        {
+                            Log.CloseAndFlush();
                         }
                         
                     }
@@ -189,6 +221,7 @@ namespace UI
         /// </summary>
         private void ViewAllReviews()
         {
+            Log.Debug("ViewAllReviews was used!!!");
             List<Review> reviews = _userbl.ViewAllReviews();
             foreach(Review review in reviews)
             {
@@ -207,6 +240,7 @@ namespace UI
         /// </summary>
         private void SearchForARestaurant()
         {
+            Log.Debug("SearchForARestaurant was used!!!");
             bool repeat = true;
             do
             {
@@ -263,6 +297,7 @@ namespace UI
                     break;
 
                     default:
+                        Console.WriteLine("WRONG SELECTION FROM SEARCH MENU!!!");
                         Console.WriteLine("!!! INCORRECT SELLECTION !!!");
                     break;
                 }
@@ -274,6 +309,7 @@ namespace UI
         /// </summary>
         private void SearchRestaurantName()
         {
+            Log.Debug("SearchRestaurantName was used!!!");
             string input;
             Console.WriteLine("ENTER RESTAURANT'S NAME");
             input = Console.ReadLine();
@@ -294,6 +330,7 @@ namespace UI
         /// </summary>
         private void SearchRestaurantType()
         {
+            Log.Debug("SearchRestaurantType was used!!!");
             string input;
             Console.WriteLine("ENTER TYPE OF FOOD");
             input = Console.ReadLine();
@@ -301,19 +338,35 @@ namespace UI
             List<Restaurant> foundRestaurants = _userbl.ViewAllRestaurants();
             foreach(Restaurant foundRestaurant in foundRestaurants)
             {
-                if(foundRestaurant.Type == input)
+                try
                 {
-                     if(foundRestaurant.Type is null)
+                    if(foundRestaurant.Type == input)
                     {
-                        Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
-                    }
-                    else
-                    {
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
-                        Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
+                        if(foundRestaurant.Type is null)
+                        {   
+                            Log.Debug("Searching for none existant restauran!!!" + foundRestaurant.Type);
+                            Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
+                        }
+                        else
+                        {
+                            Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                            Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
+                            Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                            Log.Debug("Found matching by type restaurants." + foundRestaurant.Name);     
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Did not find restaurant type.");
+                    Console.WriteLine(ex);
+
+                }
+                finally
+                {
+                    Log.CloseAndFlush();
+                }
+                
             }
            
         }
@@ -323,6 +376,7 @@ namespace UI
         /// </summary>
         private void SearchRestaurantRating()
         {
+            Log.Debug("SearchRestaurantRating was used!!!");
             decimal input;
             Console.WriteLine("ENTER RATING NUMBER YOU WANT TO SEE");
             input = Convert.ToDecimal(Console.ReadLine());
@@ -343,6 +397,7 @@ namespace UI
         /// </summary>
         private void SearchRestaurantCity()
         {
+            Log.Debug("SearchRestaurantCity was used!!!");
             string input;
             Console.WriteLine("PLEASE ENTER A CITY FOR YOUR SEARCH");
             input = Console.ReadLine();
@@ -371,6 +426,7 @@ namespace UI
         /// </summary>
         private void SearchRestaurantZipCode()
         {
+            Log.Debug("SearchRestaurantZipCode was used!!!");
             int input;
             Console.WriteLine("PLEASE ENTER A ZIPCODE TO SEARCH");
             input = Convert.ToInt32(Console.ReadLine());
@@ -397,7 +453,7 @@ namespace UI
         /// Function to view all restaurants 
         /// </summary>
         private void ViewAllRestaurants()
-        {
+        {   Log.Debug("ViewAllRestaurants was used!!!");
             List<Restaurant> restaurants = _userbl.ViewAllRestaurants();
             foreach(Restaurant restaurant in restaurants)
             {
@@ -414,6 +470,7 @@ namespace UI
         /// <returns>Restaurant</returns>
         public Restaurant SelectRestaurant(List<Restaurant> restaurants, string prompt)
         {
+            Log.Debug("SelectRestaurant was used!!!");
             Console.WriteLine(prompt);
 
             int selection;
@@ -446,7 +503,8 @@ namespace UI
         /// <param name="prompt"></param>
         /// <returns>User</returns>
         public User SelectUser(List<User> users, string prompt)
-        {
+        {   
+            Log.Debug("SelectUser was used!!!");
             Console.WriteLine(prompt);
 
             int selection;
@@ -477,6 +535,7 @@ namespace UI
         /// </summary>
          private void ViewAllUsers()
         {
+            Log.Debug("ViewAllUsers was used!!!");
             List<Restaurant> restaurants = _userbl.ViewAllRestaurants();
             foreach(Restaurant restaurant in restaurants)
             {
@@ -491,7 +550,8 @@ namespace UI
         /// <param name="restaurants">List of restaurants</param>
         /// <returns>Selected Restaurant</returns>
         private Restaurant GetRating(List<Restaurant> restaurants)
-        {
+        {   
+            Log.Debug("GetRating was used!!!");
             int select;
 
             bool valid = false;
@@ -522,6 +582,7 @@ namespace UI
         /// </summary>
         public  void GetAvgRating()
         {
+            Log.Debug("GetAvgRating was used!!!");
 
             decimal rating =0;
             decimal div=0;
