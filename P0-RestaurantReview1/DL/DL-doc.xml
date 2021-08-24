@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DL</name>
+    </assembly>
+    <members>
+        <member name="M:DL.UserRepo.#ctor(DL.Entities.p0dbContext)">
+            <summary>
+            User Class
+            </summary>
+            <param name="context">db context</param>
+        </member>
+        <member name="M:DL.UserRepo.GetAllRestaurants">
+            <summary>
+            Getting all restaurants
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DL.UserRepo.AddReview(Models.Review)">
+            <summary>
+            Adding a review 
+            </summary>
+            <param name="review"></param>
+            <returns>review</returns>
+        </member>
+        <member name="M:DL.UserRepo.AddUser(Models.User)">
+            <summary>
+                Adding a user
+            </summary>
+            <param name="user"></param>
+            <returns>user</returns>
+        </member>
+        <member name="M:DL.UserRepo.SearchRestaurantName(System.String)">
+            <summary>
+            Searching restaurant by name
+            </summary>
+            <param name="name"></param>
+            <returns>Restaurant</returns>
+        </member>
+        <member name="M:DL.UserRepo.SearchRestaurantType(System.String)">
+            <summary>
+            Searching food type
+            </summary>
+            <param name="type"></param>
+            <returns>restaurant food type</returns>
+        </member>
+        <member name="M:DL.UserRepo.SearchRestaurantRating(System.Decimal)">
+            <summary>
+            Searching for a rating
+            </summary>
+            <param name="rating"></param>
+            <returns>Review Rating</returns>
+        </member>
+        <member name="M:DL.UserRepo.SearchRestaurantCity(System.String)">
+            <summary>
+            Searching restaurant by City
+            </summary>
+            <param name="city"></param>
+            <returns>City of a Restaurant</returns>
+        </member>
+        <member name="M:DL.UserRepo.SearchRestaurantZipCode(System.Int32)">
+            <summary>
+            Searchingg for a restaurant by ZipCode
+            </summary>
+            <param name="zipCode"></param>
+            <returns>Restauirant by ZipCode</returns>
+        </member>
+    </members>
+</doc>

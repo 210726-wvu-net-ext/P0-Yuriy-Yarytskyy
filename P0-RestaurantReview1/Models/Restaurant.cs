@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace Models
 {
+    /// <summary>
+    /// Creates a restaurant
+    /// </summary>
     public class Restaurant
     {
         //Constructors

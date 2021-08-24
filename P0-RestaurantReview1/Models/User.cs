@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace Models
 {
+
+    /// <summary>
+    /// Creates user
+    /// </summary>
     public class User
     {
         //Constructors

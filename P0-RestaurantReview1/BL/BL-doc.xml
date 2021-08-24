@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BL</name>
+    </assembly>
+    <members>
+        <member name="T:BL.UserBL">
+            <summary>
+            Business layer
+            </summary>
+        </member>
+    </members>
+</doc>

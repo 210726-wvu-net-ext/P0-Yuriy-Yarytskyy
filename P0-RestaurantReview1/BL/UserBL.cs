@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace BL
 {
+    /// <summary>
+    /// Business layer
+    /// </summary>
     public class UserBL : IUserBL
     {
         private IUserRepo _repo;

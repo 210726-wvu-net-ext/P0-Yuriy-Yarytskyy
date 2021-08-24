@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Models
 {
+    /// <summary>
+    /// creates a review 
+    /// </summary>
     public class Review
     {
         //Constructors

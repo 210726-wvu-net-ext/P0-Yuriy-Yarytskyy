@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Models</name>
+    </assembly>
+    <members>
+        <member name="T:Models.Restaurant">
+            <summary>
+            Creates a restaurant
+            </summary>
+        </member>
+        <member name="T:Models.Review">
+            <summary>
+            creates a review 
+            </summary>
+        </member>
+        <member name="T:Models.User">
+            <summary>
+            Creates user
+            </summary>
+        </member>
+    </members>
+</doc>
