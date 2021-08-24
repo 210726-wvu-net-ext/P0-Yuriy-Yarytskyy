@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UI</name>
+    </assembly>
+    <members>
+        <member name="T:UI.MainMenu">
+            <summary>
+            Main Menu functionality
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.Start">
+            <summary>
+            First menu which lats you use verious methods to retrive and manipulate data.
+            </summary>
+            <param></param>
+            <returns></returns>
+        </member>
+        <member name="M:UI.MainMenu.AddUser">
+            <summary>
+            Function to add user which will be stored in database
+            </summary>
+            <param>string</param>
+            <param></param>
+            <returns></returns>
+        </member>
+        <member name="M:UI.MainMenu.AddReview">
+            <summary>
+            A functiion to add review to a review table
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.ViewAllReviews">
+            <summary>
+            A function to view all reviews by pulling data from db
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchForARestaurant">
+            <summary>
+            A function to to search for a restaurant by using different methods
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchRestaurantName">
+            <summary>
+            Search for a restaurant by name
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchRestaurantType">
+            <summary>
+            Search for a restaurant by different types of cuisine
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchRestaurantRating">
+            <summary>
+            Search for a restaurats by rating
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchRestaurantCity">
+            <summary>
+            Search for a restaurant by city
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SearchRestaurantZipCode">
+            <summary>
+            Search for a restaurant by ZipCode
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.ViewAllRestaurants">
+            <summary>
+            Function to view all restaurants 
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.SelectRestaurant(System.Collections.Generic.List{Models.Restaurant},System.String)">
+             <summary>
+            Selects a restaurant from db
+             </summary>
+             <param name="restaurants">List of restaurants</param>
+             <param name="prompt"></param>
+             <returns>Restaurant</returns>
+        </member>
+        <member name="M:UI.MainMenu.SelectUser(System.Collections.Generic.List{Models.User},System.String)">
+            <summary>
+            Selects a user from db
+            </summary>
+            <param name="users">List of users</param>
+            <param name="prompt"></param>
+            <returns>User</returns>
+        </member>
+        <member name="M:UI.MainMenu.ViewAllUsers">
+            <summary>
+            Lists all users
+            </summary>
+        </member>
+        <member name="M:UI.MainMenu.GetRating(System.Collections.Generic.List{Models.Restaurant})">
+            <summary>
+            Get restaurant's rating
+            </summary>
+            <param name="restaurants">List of restaurants</param>
+            <returns>Selected Restaurant</returns>
+        </member>
+        <member name="M:UI.MainMenu.GetAvgRating">
+            <summary>
+            Getting AVG rating
+            </summary>
+        </member>
+    </members>
+</doc>

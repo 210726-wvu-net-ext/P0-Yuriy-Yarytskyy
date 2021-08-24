@@ -31,24 +31,16 @@ namespace Test
                 context.Database.EnsureCreated();
 
                 context.Restaurants.AddRange(
-                    new Entity.Restaurant(
+                    new Entity.Restaurant{
                         Id = 1,
                         Type = "PIzza",
                         Name = "HopePizza",
                         Address = "Hope St",
                         City = "Stamford",
                         State = "CT",
-                        ZipCode = 06906,
-                        Reviews = new List<Entity.Review> {
-                            new Entity.Review{
-                                Id = 1,
-                                Rating = 4,
-                                Comment = "Very good pizza",
-                                UserId = 1,
-                                RestaurantId = 1
-                            }
-                        }
-                    )
+                        ZipCode = 06906
+                        
+                    }
                 );
                 context.SaveChanges();
             }

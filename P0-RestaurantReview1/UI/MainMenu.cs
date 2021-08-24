@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace UI
 {
+    /// <summary>
+    /// Main Menu functionality
+    /// </summary>
     public class MainMenu : IMenu
     {
         private IUserBL _userbl;
@@ -12,6 +15,13 @@ namespace UI
         {
             _userbl = bl;
         }
+
+        /// <summary>
+        /// First menu which lats you use verious methods to retrive and manipulate data.
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+  
         public void Start()
         {
         
@@ -78,6 +88,12 @@ namespace UI
 
         }
 
+        /// <summary>
+        /// Function to add user which will be stored in database
+        /// </summary>
+        /// <param>string</param>
+        /// <param></param>
+        /// <returns></returns>
         private void AddUser()
         {
             string inputName;
@@ -105,6 +121,10 @@ namespace UI
             Console.WriteLine($"{userToAdd.Name} was successfully added as a user.");
             Console.WriteLine("_____________________________________________________");
         }
+
+        /// <summary>
+        /// A functiion to add review to a review table
+        /// </summary>
         private void AddReview()
         {
             decimal rating = 0;
@@ -164,6 +184,9 @@ namespace UI
             }
 
         }
+        /// <summary>
+        /// A function to view all reviews by pulling data from db
+        /// </summary>
         private void ViewAllReviews()
         {
             List<Review> reviews = _userbl.ViewAllReviews();
@@ -179,6 +202,9 @@ namespace UI
             Console.WriteLine("Searching for a user");
         }
 
+        /// <summary>
+        /// A function to to search for a restaurant by using different methods
+        /// </summary>
         private void SearchForARestaurant()
         {
             bool repeat = true;
@@ -242,6 +268,10 @@ namespace UI
                 }
             }while(repeat);
         }
+
+        /// <summary>
+        /// Search for a restaurant by name
+        /// </summary>
         private void SearchRestaurantName()
         {
             string input;
@@ -258,9 +288,12 @@ namespace UI
                 Console.WriteLine($"FOUND: {foundRestaurant.Name} {foundRestaurant.Address} {foundRestaurant.City} {foundRestaurant.State} {foundRestaurant.ZipCode}");
             }
         }
+
+        /// <summary>
+        /// Search for a restaurant by different types of cuisine
+        /// </summary>
         private void SearchRestaurantType()
         {
-            
             string input;
             Console.WriteLine("ENTER TYPE OF FOOD");
             input = Console.ReadLine();
@@ -285,6 +318,9 @@ namespace UI
            
         }
 
+        /// <summary>
+        /// Search for a restaurats by rating
+        /// </summary>
         private void SearchRestaurantRating()
         {
             decimal input;
@@ -302,6 +338,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Search for a restaurant by city
+        /// </summary>
         private void SearchRestaurantCity()
         {
             string input;
@@ -327,6 +366,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Search for a restaurant by ZipCode
+        /// </summary>
         private void SearchRestaurantZipCode()
         {
             int input;
@@ -351,6 +393,9 @@ namespace UI
                 }
             }
         }
+        /// <summary>
+        /// Function to view all restaurants 
+        /// </summary>
         private void ViewAllRestaurants()
         {
             List<Restaurant> restaurants = _userbl.ViewAllRestaurants();
@@ -361,7 +406,12 @@ namespace UI
                 Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
             }
         }
-
+        /// <summary>
+        ///Selects a restaurant from db
+        /// </summary>
+        /// <param name="restaurants">List of restaurants</param>
+        /// <param name="prompt"></param>
+        /// <returns>Restaurant</returns>
         public Restaurant SelectRestaurant(List<Restaurant> restaurants, string prompt)
         {
             Console.WriteLine(prompt);
@@ -389,7 +439,12 @@ namespace UI
                 Console.WriteLine("___________________________");
             }while(true);
         }
-
+        /// <summary>
+        /// Selects a user from db
+        /// </summary>
+        /// <param name="users">List of users</param>
+        /// <param name="prompt"></param>
+        /// <returns>User</returns>
         public User SelectUser(List<User> users, string prompt)
         {
             Console.WriteLine(prompt);
@@ -417,7 +472,9 @@ namespace UI
                 Console.WriteLine("___________________________");
             }while(true);
         }
-
+        /// <summary>
+        /// Lists all users
+        /// </summary>
          private void ViewAllUsers()
         {
             List<Restaurant> restaurants = _userbl.ViewAllRestaurants();
@@ -428,7 +485,11 @@ namespace UI
                 Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
             }
         }
-
+        /// <summary>
+        /// Get restaurant's rating
+        /// </summary>
+        /// <param name="restaurants">List of restaurants</param>
+        /// <returns>Selected Restaurant</returns>
         private Restaurant GetRating(List<Restaurant> restaurants)
         {
             int select;
@@ -456,7 +517,9 @@ namespace UI
             }while(true);
 
         }
-
+        /// <summary>
+        /// Getting AVG rating
+        /// </summary>
         public  void GetAvgRating()
         {
 
