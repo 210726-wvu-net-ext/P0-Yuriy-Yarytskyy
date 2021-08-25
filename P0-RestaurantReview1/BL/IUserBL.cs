@@ -13,12 +13,13 @@ namespace BL
 
         Review AddReview(Review review);
 
-         User AddUser(User user);
-         User SearchForUser(string name);
+        User AddUser(User user);
+        User SearchForUser(string name);
+        // User DeleteUser(User user);
 
-         Restaurant SearchRestaurantName(string name);
-         Restaurant SearchRestaurantType(string type);
-         Review SearchRestaurantRating(decimal rating);
+        Restaurant SearchRestaurantName(string name);
+        Restaurant SearchRestaurantType(string type);
+        Review SearchRestaurantRating(decimal rating);
          Restaurant SearchRestaurantCity(string city);
          Restaurant SearchRestaurantZipCode(int zipCode);
 

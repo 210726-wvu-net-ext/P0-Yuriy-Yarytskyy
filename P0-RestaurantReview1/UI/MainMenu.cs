@@ -60,9 +60,13 @@ namespace UI
                 Console.WriteLine("---------------------------------------");
                 Console.WriteLine("------------**************-------------");
                 Console.WriteLine("-------ARE YOU AN ADMIN USERS----------");
+                Console.WriteLine("---------------------------------------");
                 Console.WriteLine("------------****[YES]*****-------------");
+                Console.WriteLine("---------------------------------------");
                 Console.WriteLine("------------******OR******-------------");
+                Console.WriteLine("---------------------------------------");
                 Console.WriteLine("------------*****[NO]*****-------------");
+                Console.WriteLine("---------------------------------------");
                
 
                 switch(Console.ReadLine())
@@ -625,7 +629,7 @@ namespace UI
         {
             string userName;
             string password;
-            string p, n;
+            
             Console.WriteLine("*********LOGIN*********");
             Console.WriteLine("PLEASE ENTER USER_NAME:");
             userName=Console.ReadLine();
@@ -633,15 +637,53 @@ namespace UI
             password = Console.ReadLine();
 
             List<User> users = _userbl.ViewAllUsers();
-            
+            // for (int i = 0; i<users.Count; i++)
             foreach(User user in users)
             {       
-                n = user.Name;
-                p = user.Password;
+                
 
-                if(n == userName && p == password)
+                if(user.Name == userName && user.Password == password)
                 {
-                    Console.WriteLine("WELCOM TO ADMIN MENU");
+                    
+                    bool repeat = true;
+                    do
+                    {
+                        Console.WriteLine("          WELCOM TO ADMIN MENU         ");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("*        WELCOME TO HIDDEN MENU!      *");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("*      PLEASE MAKE YOUR SELECTION     *");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("[0] EXIT");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("[S] TO SEARCH FOR A USER");
+                        Console.WriteLine("---------------------------------------");
+                        Console.WriteLine("[D] TO DELETE A USER");
+                        Console.WriteLine("---------------------------------------");
+
+                        switch(Console.ReadLine())
+                        {
+                        case "0":
+                            Log.Debug("Program was manually exited!!!");
+                            Console.WriteLine("You have chosen to exit!");
+                            repeat = false;
+                        break;
+
+                        case "S":
+                            SearchForUser();
+                        break;
+
+                        // case "D":
+                        //     DeleteUser();
+                        // break;
+
+                        default:
+                            Console.WriteLine("WRONG SELECTION!!!");
+                            Log.Debug("Invalid selection in main menu!!!");
+                        break;
+                        }
+                    }while(repeat);    
                 }
               
             }
@@ -675,6 +717,18 @@ namespace UI
                 }
             }   
          }
+
+        //  private Models.User DeleteUser()
+        // {
+        //     List<User> users = _userbl.ViewAllUsers();
+        //     User selectedUser = SelectUser(users, "WHICH USER DO YOU WANT TO DELETE?");
+        //     _userbl.DeleteUser(selectedUser);
+        //     users = _userbl.ViewAllUsers();
+        //     foreach(User user in users)
+        //     {
+        //         Console.WriteLine(user.Name);
+        //     }
+        // }
     }
 
     
