@@ -126,6 +126,62 @@ namespace Test
         }
 
     }
+    public class CheckAdmin
+    {   
+        [Fact]
+        public void AdminTest()
+        {
+            bool login = false;
+            string adminUN = "ADMIN";
+            string adminUP = "CODE";
 
-     
+            string expectedUN = "ADMIN";
+            string expectedUP = "CODE";
+            if(adminUN==expectedUN && adminUP==expectedUP)
+            {
+                bool outcome = true;
+                Assert.True(outcome);
+            }
+          
+        }
+    }
+
+    public class IsAdmin
+    {   
+        [Fact]
+        public void CheckIfUserAdmin()
+        {
+            bool login = false;
+            string adminUN = "ADMIN";
+            string adminUP = "CODE";
+            string[] userNames = {"John","Paul","Yuriy","ADMIN"};
+
+            for (int i = 0; i < userNames.Length; i++)
+            {
+               if(userNames[i] == adminUN){
+                   login = true;
+               }
+            }
+        }
+    }
+
+    public class IsAdminPasswor
+    {   
+        [Fact]
+        public void CheckPassword()
+        {
+            bool login = true;
+            string adminUN = "ADMIN";
+            string adminUP = "CODE";
+            string[] userPasswords = {"PASSword","NULLL","Passcode","Code"};
+
+            for (int i = 0; i < userPasswords.Length; i++)
+            {
+               if(userPasswords[i] == adminUP){
+                   login = false;
+               }
+            }
+        }
+    }
+
 }

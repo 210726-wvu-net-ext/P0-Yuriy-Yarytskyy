@@ -434,29 +434,28 @@ namespace UI
         /// </summary>
         private void SearchRestaurantZipCode()
         {
+            
             Log.Debug("SearchRestaurantZipCode was used!!!");
             int input;
             Console.WriteLine("PLEASE ENTER A ZIPCODE TO SEARCH");
-            input = Convert.ToInt32(Console.ReadLine());
-          
-                
-            Console.WriteLine("PLEASE ENTER 5 DIGIT ZipCode");
-           
-           
-
+            
+            input = Convert.ToInt32(Console.ReadLine());  
+              
             Restaurant foundRestaurant = _userbl.SearchRestaurantZipCode(input);
-
-                if(foundRestaurant.ZipCode != input)
-                {
-                    Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
-                }
-                else
-                {
-                    Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
-                    Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
-                    Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
-                }
+        
+            
+            if(foundRestaurant.ZipCode != input)
+            {
+                Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
+            }
+            else
+            {
+                Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
+                Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
+            }
                 
+            
             
         }
         /// <summary>
