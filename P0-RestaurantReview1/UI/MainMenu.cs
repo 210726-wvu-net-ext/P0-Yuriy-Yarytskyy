@@ -22,7 +22,7 @@ namespace UI
                             .WriteTo.Console()
                             .WriteTo.File("../logs/restrevlogs.txt", rollingInterval:RollingInterval.Day)
                             .CreateLogger();
-            Log.Information("UI begining");
+            Log.Information("UI Start");
 
         }
 
@@ -63,10 +63,7 @@ namespace UI
                 Console.WriteLine("---------------------------------------");
                 Console.WriteLine("------------****[YES]*****-------------");
                 Console.WriteLine("---------------------------------------");
-                Console.WriteLine("------------******OR******-------------");
-                Console.WriteLine("---------------------------------------");
-                Console.WriteLine("------------*****[NO]*****-------------");
-                Console.WriteLine("---------------------------------------");
+
                
 
                 switch(Console.ReadLine())
@@ -416,22 +413,19 @@ namespace UI
             Console.WriteLine("PLEASE ENTER A CITY FOR YOUR SEARCH");
             input = Console.ReadLine();
 
-            List<Restaurant> foundRestaurants = _userbl.ViewAllRestaurants();
-            foreach(Restaurant foundRestaurant in foundRestaurants)
+            Restaurant foundRestaurant = _userbl.SearchRestaurantCity(input);
+            
+            if(foundRestaurant.City == input)
             {
-                if(foundRestaurant.City == input)
-                {
-                     if(foundRestaurant.City is null)
-                    {
-                        Console.WriteLine($"{input} no such city in our records. Please re-enter.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
-                        Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
-                    }
-                }
+                Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
+                Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+            }
+                
+            
+            if(foundRestaurant.City != input)
+            {
+                Console.WriteLine($"{input} no such city in our records. Please re-enter.");          
             }
         }
 
@@ -444,24 +438,26 @@ namespace UI
             int input;
             Console.WriteLine("PLEASE ENTER A ZIPCODE TO SEARCH");
             input = Convert.ToInt32(Console.ReadLine());
+          
+                
+            Console.WriteLine("PLEASE ENTER 5 DIGIT ZipCode");
+           
+           
 
-            List<Restaurant> foundRestaurants = _userbl.ViewAllRestaurants();
-            foreach(Restaurant foundRestaurant in foundRestaurants)
-            {
-                if(foundRestaurant.ZipCode == input)
+            Restaurant foundRestaurant = _userbl.SearchRestaurantZipCode(input);
+
+                if(foundRestaurant.ZipCode != input)
                 {
-                     if(foundRestaurant.ZipCode == 0)
-                    {
-                        Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
-                    }
-                    else
-                    {
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
-                        Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
-                        Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
-                    }
+                    Console.WriteLine($"{input} no such restaurant exists, please try a different entry");
                 }
-            }
+                else
+                {
+                    Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine($"    Restaurant ID: {foundRestaurant.Id}      Food-Type: {foundRestaurant.Type}      Name: {foundRestaurant.Name}      Address: {foundRestaurant.Address}, {foundRestaurant.City}, {foundRestaurant.State}, {foundRestaurant.ZipCode}");
+                    Console.WriteLine("  -----------------------------------------------------------------------------------------------------------------------------");            
+                }
+                
+            
         }
         /// <summary>
         /// Function to view all restaurants 
@@ -655,7 +651,7 @@ namespace UI
                         Console.WriteLine("---------------------------------------");
                         Console.WriteLine("*      PLEASE MAKE YOUR SELECTION     *");
                         Console.WriteLine("---------------------------------------");
-                        Console.WriteLine("[0] EXIT");
+                        Console.WriteLine("[0] LOGOUT");
                         Console.WriteLine("---------------------------------------");
                         Console.WriteLine("[S] TO SEARCH FOR A USER");
                         Console.WriteLine("---------------------------------------");
@@ -674,9 +670,18 @@ namespace UI
                             SearchForUser();
                         break;
 
-                        // case "D":
-                        //     DeleteUser();
-                        // break;
+                        case "D":
+                            Console.WriteLine("***************************************");
+                            Console.WriteLine("***************************************");
+                            Console.WriteLine("**                                   **");
+                            Console.WriteLine("**         PLEASE SUBSCRIBE          **");
+                            Console.WriteLine("**         TO USE THE BEST           **");
+                            Console.WriteLine("**         APP ON THE MARKET         **");
+                            Console.WriteLine("**       AND UNLOCK ALL FEATURES     **");
+                            Console.WriteLine("**                                   **");
+                            Console.WriteLine("***************************************");
+                            Console.WriteLine("***************************************");
+                        break;
 
                         default:
                             Console.WriteLine("WRONG SELECTION!!!");
