@@ -40,11 +40,6 @@ namespace BL
             return _repo.AddUser(user);
         }
 
-        // public User DeleteUser(User user)
-        // {
-        //     return _repo.DeleteUser(user);
-        // }
-
         public Restaurant SearchRestaurantName(string name)
         {
             return _repo.SearchRestaurantName(name);

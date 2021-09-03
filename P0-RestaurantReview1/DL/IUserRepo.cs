@@ -14,7 +14,6 @@ namespace DL
 
         Review AddReview(Review review);
         User AddUser(User user);
-        // User DeleteUser(User user);
          
 
         Restaurant SearchRestaurantName(string name);
