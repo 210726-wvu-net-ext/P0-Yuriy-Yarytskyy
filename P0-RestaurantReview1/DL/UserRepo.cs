@@ -166,20 +166,6 @@ namespace DL
             return new Models.User();
         }
 
-        //  public Models.User DeleteUser(Models.User user)
-        // {
-        //     Entities.User userToDelete = new Entities.User
-        //     {
-        //         Id = user.Id,
-        //         Name = user.Name,
-        //         Password = user.Password,
-        //         Email = user.Email
-            
-        //     };
-        //     _context.Users.Remove(userToDelete);
-        //     _context.SaveChanges();
-        // }
-
     //      public Models.User AddUser(Models.User user)
     //     {
     //         _context.Users.Add(

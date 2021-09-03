@@ -15,7 +15,6 @@ namespace BL
 
         User AddUser(User user);
         User SearchForUser(string name);
-        // User DeleteUser(User user);
 
         Restaurant SearchRestaurantName(string name);
         Restaurant SearchRestaurantType(string type);
